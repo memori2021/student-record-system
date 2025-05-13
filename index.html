@@ -1,0 +1,203 @@
+<?php
+ include('includes/initialize.php');
+ // include('db.php');
+  //login confirmation
+ confirm_logged_in();
+
+ ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content=", initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Online Flood Monitoring</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Dosis:400,600,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <link href="css/background.css" rel="stylesheet" />
+
+
+</head>
+<body>
+   <!-- nv section -->
+<!--particles js files-->
+
+  <!--first particles.js file and app.js-->
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+
+  <section class="nav_section">
+    <div class="container">
+      <div class="custom_nav2">
+        <nav class="navbar navbar-expand custom_nav-container "> 
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">   
+            <div class="d-flex  flex-column flex-lg-row align-items-center">
+              <ul class="logo">
+              
+              </ul>
+              <ul class="profile">
+              <h6><span> </span></h6></a>
+              </ul>
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link  " href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#history">History </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://barangay-f3fjcphabjb7gue0.japaneast-01.azurewebsites.net/Identity/Account/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://barangay-f3fjcphabjb7gue0.japaneast-01.azurewebsites.net/Identity/Account/Login">Login</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          </nav>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- end nav section -->
+<div id="particles-js" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: yellow;">
+  <div style="text-align: center;">
+    <h2 style="margin: 0; font-weight: bold;">ONLINE FLOOD ALERT SYSTEM WITH SMS NOTIFICATION</h2><br>
+    <h2 style="margin: 0; font-weight: bold;">OF BARANGAY SAN ROQUE CASTILLA SORSOGON</h2>
+  </div>
+</div>
+
+  
+
+<!--particles js files-->
+
+  <!--first particles.js file and app.js-->
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+     
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- shop section -->
+
+  <section class="shop_section layout_padding">
+    <section class="history_section" id="history"></section>
+    <div class="container">
+      <div class="box">
+        <div class="detail-box" style="margin-bottom: 30px;">
+          <h2>
+            HISTORY
+          </h2>
+          <p>
+Historically, somewhere 1924 the residents of Cumadcad and Salvacion where their houses are near the boundary of theses two joining barangay, they agree to form another barangay. It was headed by Lorenzo Llaneta, Igmedio Millena, and Apolonio Lleva. Apolonio Lleva donated a part of his land then Lorenzo Llaneta donated the image of “St. Roque.” With the efforts of this three and the cooperation of other residents they were able to built a chapel that every people from nearly places were also attended all the activities conducted in this place until they used to call it “SAN ROQUE.”
+Barangay San Roque is more or less 388 hectares which bounded from North of Barangay Salvacion, South is Barangay Cumadcad, East is Barangay San Vicente, and West is the Barangay Cagbacong, Legazpi City. San Roque is a barangay in the municipality of Castilla located at province of Sorsogon on its first district. Its population as determined by the 2020 Census was 703. This represented 1.16% of the total population of Castilla.
+            
+          </p>
+        </div>
+
+                    <div class="col-lg-12 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <p>FLOOD RECORDS</p>
+                  <table class="table table-bordered table-striped" id="example1"  style="width:100%; background-color:white;">
+        <thead>
+          <th>Status</th>
+          <th>Date</th>
+          
+         
+      
+        </thead>
+        <tbody>
+
+
+          <?php
+            //database connection
+            $conn = new mysqli('localhost', 'root', '', 'asidatabase');
+            if ($conn->connect_error){
+              die("Connection Failed". $conn->connect_error);
+            }
+
+            $sql = "select * from floodstatus";
+            $query = $conn->query($sql);
+            while($row=$query->fetch_array()){
+              ?>
+              <tr>
+                <td><?php echo $row['alertstatus']; ?></td>
+                <td><?php echo $row['datestatus']; ?></td>
+                
+                <td> </td>
+          </tr>
+              <?php
+            }
+          ?>
+        </tbody>
+      </table>
+                </div>
+                
+      
+         
+            
+
+              </div>
+
+              
+            </div><!-- ./col -->
+
+          <h2>
+            Bagyong Odette, December 17, 2021
+          </h2>
+
+        <div class="img-box" style="margin-bottom: 100px;"> 
+           <img src="images/000.png">
+        </div>
+
+
+
+        <div class="img-box"> 
+           <img src="images/logo1.png" style="height: 100px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+
+</body>
+
+</html>
